@@ -1,0 +1,42 @@
+{% extends "admin/admin_index.html" %}
+{% block body %}
+    <form action="" method="get"></form><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form name="form1" method="post" action="">
+  <table class="table table-bordered">
+    <tr style="background-color: #D81324;color: black">
+      <th scope="row">#</th>
+      <td>USER</td>
+      <td>COMPLAINT</td>
+      <td>DATE</td>
+      <td>SERVICE PROVIDER</td>
+      <td>REPLAY</td>
+      <td>REPLAY DATE</td>
+    </tr>
+      {% for i in data %}
+    <tr>
+      <th scope="row">{{ forloop.counter }}</th>
+      <td>{{ i.USER.username }}</td>
+      <td>{{ i.complaint }}</td>
+      <td>{{ i.date }}</td>
+      <td>{{ i.SERVICEPROVIDER.service_name }}</td>
+
+        {% if i.reply == 'pending' %}
+      <td colspan="2"><a href="/send_reply/{{ i.id }}#aa" class="btn btn-outline-danger">send replay</a></td>
+    {% else  %}
+     <td>{{ i.reply }}</td>
+      <td>{{ i.replydate}}</td>
+    {% endif %}
+    </tr>
+       {% endfor %}
+  </table>
+</form>
+</body>
+</html>
+{% endblock %}

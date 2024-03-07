@@ -1,0 +1,39 @@
+{% extends "admin/admin_index.html" %}
+{% block body %}
+    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <table class="table table-bordered">
+    <tr  style="background-color: #D81324;color: black">
+      <th scope="row">#</th>
+      <td >service provider name</td>
+      <td >contact</td>
+      <td >email</td>
+      <td >place</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+      {% for i in data %}
+
+    <tr>
+      <th scope="row">{{ forloop.counter }}&nbsp;</th>
+      <td>{{ i.service_name }}</td>
+      <td>{{ i.contactnumber }}</td>
+      <td>{{ i.email }}</td>
+      <td>{{ i.place }}</td>
+      <td><a href="/approve_serviceprovider/{{ i.LOGIN.id }}"  onclick="return confirm('Are you sure to approve?')" class="btn btn-outline-danger">Approve</a><br>
+          <br><a href="/reject_serviceprovider/{{ i.LOGIN.id }}"  onclick="return confirm('Are you sure to reject?')" class="btn btn-outline-danger">Reject</a></td>
+      <td><a href="https://www.google.com/maps/?q={{ row.latitude }} {{ row.longitude }}" class="btn btn-outline-danger">Locate</a></td>
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+</html>
+{% endblock %}

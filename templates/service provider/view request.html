@@ -1,0 +1,48 @@
+{% extends 'service provider/provider_indexx.html' %}
+
+{% block body %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+ <table width="500" class=" table table-bordered">
+    <tr style="background-color: #D81324;color: black">
+      <th scope="col">#</th>
+      <th scope="col">service</th>
+      <th scope="col">user</th>
+      <th scope="col">Locate</th>
+      <th scope="col">date</th>
+      <th scope="col">payment</th>
+      <th scope="col"></th>
+    </tr>
+       {% for i in data%}
+
+
+    <tr>
+      <td>{{ forloop.counter }}</td>
+      <td>&nbsp;{{i.SERVICE.id}}</td>
+      <td>&nbsp;{{i.USER.username}}</td>
+
+      <td><a href="https://www.google.com/maps/?q={{ row.latitude }} {{ row.longitude }}" class="btn btn-outline-danger">Locate</a></td>
+      <td>{{i.date  }}</td>
+      <td>{{i.paymentstatus }}</td>
+      <td>
+          {% if i.status == "pending" %}
+          <a href="/approve_request/{{ i.id }}#aa" class="btn btn-outline-danger" onclick="return confirm('Are you sure?')">approve</a>
+          <p><a href="/reject_request/{{ i.id }}#aa" class="btn btn-outline-danger" onclick="return confirm('Are you sure?')">reject</a> </p>
+          {% elif i.status == "approved" %}
+             <a href="/updation_completion_status/{{ i.id }}#aa" class="btn btn-outline-danger">update completion status</a>
+          {% endif %}
+      </td>
+    </tr>
+       {% endfor %}
+  </table>
+</form>
+</body>
+</html>
+{% endblock %}

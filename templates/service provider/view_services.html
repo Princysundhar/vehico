@@ -1,0 +1,31 @@
+{% extends 'service provider/provider_indexx.html' %}
+
+{% block body %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+</form>
+<table class="table table-bordered">
+  <tr  style="background-color: #D81324;color: black">
+    <th >#</th>
+    <th >Service name</th>
+    <th >&nbsp;</th>
+  </tr>
+    {% for i in data %}
+
+  <tr>
+    <td>{{ forloop.counter }}</td>
+    <td>{{ i.service_name }}&nbsp;</td>
+    <td><a href="/provider_add_own_service/{{ i.id }}#aa" class="btn btn-outline-danger">Add own service</a></td>
+  </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
+{% endblock %}

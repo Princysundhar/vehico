@@ -1,0 +1,30 @@
+{% extends "admin/admin_index.html" %}
+{% block body %}
+    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <table class="table table-bordered">
+    <tr  style="background-color: #D81324;color: black">
+      <th scope="row">#</th>
+      <td>SERVICE NAME </td>
+      <td>&nbsp;</td>
+    </tr>
+      {% for i in data %}
+    <tr>
+      <th scope="row">&nbsp;{{ forloop.counter }}</th>
+      <td>{{ i.service_name }}&nbsp;</td>
+      <td><p><a href="/update_service/{{ i.id }}#aa" class="btn btn-outline-danger">Edit</a></p>
+      <p><a href="/delete_service/{{ i.id }}" onclick="return confirm('Are you sure to delete?')" class="btn btn-outline-danger">Delete</a></p></td>
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+</html>
+{% endblock %}
